@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:toonflix/counter.dart';
 import 'package:toonflix/widgets/button.dart';
 import 'package:toonflix/widgets/currency_card.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const Counter());
+  // runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
