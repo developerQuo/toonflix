@@ -8,11 +8,11 @@ class Counter extends StatefulWidget {
 }
 
 class _CounterState extends State<Counter> {
-  int counter = 0;
+  List<int> numbers = [];
 
   void onClicked() {
     setState(() {
-      counter = counter + 1;
+      numbers.add(numbers.length);
     });
   }
 
@@ -31,12 +31,7 @@ class _CounterState extends State<Counter> {
                 fontSize: 30,
               ),
             ),
-            Text(
-              '$counter',
-              style: const TextStyle(
-                fontSize: 30,
-              ),
-            ),
+            for (var n in numbers) Text('$n'),
             IconButton(
               onPressed: onClicked,
               icon: const Icon(Icons.add_box_rounded),
