@@ -11,9 +11,10 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   static const twentyFiveMinutes = 1500;
+  static const zero = 0;
   int totalSeconds = twentyFiveMinutes;
   bool isRunning = false;
-  int totalPormodoros = 0;
+  int totalPormodoros = zero;
   late Timer timer;
 
   void onTick(Timer timer) {
@@ -48,6 +49,15 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  void onResetPressed() {
+    setState(() {
+      isRunning = false;
+      totalSeconds = twentyFiveMinutes;
+      totalPormodoros = zero;
+    });
+    timer.cancel();
+  }
+
   String format(int seconds) {
     var duration = Duration(seconds: seconds);
     return duration.toString().substring(2, 7);
@@ -75,16 +85,26 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           Flexible(
             flex: 3,
-            child: Center(
-              child: IconButton(
-                  onPressed: isRunning ? onPausePressed : onStartPressed,
-                  icon: Icon(
-                    isRunning
-                        ? Icons.pause_circle_outline_outlined
-                        : Icons.play_circle_outlined,
-                  ),
-                  iconSize: 120,
-                  color: Theme.of(context).cardColor),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(
+                    onPressed: isRunning ? onPausePressed : onStartPressed,
+                    icon: Icon(
+                      isRunning
+                          ? Icons.pause_circle_outline_outlined
+                          : Icons.play_circle_outlined,
+                    ),
+                    iconSize: 120,
+                    color: Theme.of(context).cardColor),
+                IconButton(
+                    onPressed: onResetPressed,
+                    icon: const Icon(
+                      Icons.restore_outlined,
+                    ),
+                    iconSize: 60,
+                    color: Theme.of(context).cardColor),
+              ],
             ),
           ),
           Flexible(
