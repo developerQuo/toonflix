@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:toonflix/pomodoro.dart';
+import 'package:toonflix/ui_clone.dart';
 import 'package:toonflix/widgets/button.dart';
 import 'package:toonflix/widgets/currency_card.dart';
 
 void main() {
-  runApp(const PromodoApp());
+  runApp(const UIClone());
+  // runApp(const PromodoApp());
   // runApp(const Counter());
   // runApp(const MyApp());
 }
